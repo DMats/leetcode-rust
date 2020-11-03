@@ -16,17 +16,31 @@ impl Solution {
             return 0;
         }
         let mut max_power = 1;
+        dbg!(max_power);
         let mut current_power = 1;
-        let mut current_char = s.chars().next().unwrap();
+        dbg!(current_power);
+        let mut current_char: Option<char> = None;
+        dbg!(current_char);
         for c in s.chars() {
-            if c == current_char {
-                current_power += 1;
-                if current_power > max_power {
-                    max_power = current_power;
+            match current_char {
+                None => {
+                    current_char = Some(c);
                 }
-            } else {
-                current_char = c;
-                current_power = 1;
+                _ => {
+                    if c == current_char.unwrap() {
+                        current_power += 1;
+                        dbg!(current_power);
+                        if current_power > max_power {
+                            max_power = current_power;
+                            dbg!(max_power);
+                        }
+                    } else {
+                        current_char = Some(c);
+                        dbg!(current_char);
+                        current_power = 1;
+                        dbg!(current_power);
+                    }
+                }
             }
         }
         max_power

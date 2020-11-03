@@ -18,7 +18,7 @@ impl Solution {
         let mut max_power = 1;
         let mut current_power = 1;
         let mut current_char = s.chars().next().unwrap();
-        for (i, c) in s.chars().enumerate() {
+        for (c) in s.chars()) {
             if c == current_char {
                 current_power += 1;
                 if current_power > max_power {

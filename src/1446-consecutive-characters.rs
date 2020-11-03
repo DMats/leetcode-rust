@@ -15,15 +15,15 @@ impl Solution {
         }
         let mut max_power = 0;
         let mut current_power = 0;
-        let mut current_char = &s.chars().next().unwrap();
+        let mut current_char = s.chars().next().unwrap();
         for (i, c) in s.chars().enumerate() {
-            if c == *current_char {
+            if c == current_char {
                 current_power += 1;
                 if current_power > max_power {
                     max_power = current_power;
                 }
             } else {
-                current_char = &s.chars().nth(i).unwrap();
+                current_char = s.chars().nth(i).unwrap();
                 current_power = 0;
             }
         }

@@ -13,8 +13,8 @@ impl Solution {
         if s.is_empty() {
             return 0;
         }
-        let mut max_power = 0;
-        let mut current_power = 0;
+        let mut max_power = 1;
+        let mut current_power = 1;
         let mut current_char = s.chars().next().unwrap();
         for (i, c) in s.chars().enumerate() {
             if c == current_char {
@@ -24,7 +24,7 @@ impl Solution {
                 }
             } else {
                 current_char = s.chars().nth(i).unwrap();
-                current_power = 0;
+                current_power = 1;
             }
         }
         max_power

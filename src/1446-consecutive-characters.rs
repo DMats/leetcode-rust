@@ -9,7 +9,7 @@ impl Solution {
         // - iterate over chars in string
         //   - if c != current_char, update current_char, reset current_power
         //   - else increment current power
-        //     - if current_power > max_power, max_power = current_power what
+        //     - if current_power > max_power, max_power = current_power
         if s.is_empty() {
             return 0;
         }

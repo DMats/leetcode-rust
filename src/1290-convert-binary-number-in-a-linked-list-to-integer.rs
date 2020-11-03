@@ -28,11 +28,11 @@ impl Solution {
                         Some(next_node) => {
                             decimal = (decimal * 2) + (*next_node).val;
                             curr_node = (*next_node).next;
-                        },
+                        }
                     }
                 }
                 return decimal;
-            },
+            }
         }
     }
 }

@@ -30,7 +30,9 @@ impl Solution {
                     // Borrow the first sorted node
                     let mut sorted_ref = &mut sorted;
                     // Iterate over sorted nodes. Check if sorted.val < node_to_insert.val
-                    while sorted_ref.next.is_some() && sorted_ref.next.as_ref().unwrap().val < node_to_insert.val {
+                    while sorted_ref.next.is_some()
+                        && sorted_ref.next.as_ref().unwrap().val < node_to_insert.val
+                    {
                         // Move the sorted_ref to the next sorted node
                         sorted_ref = sorted_ref.next.as_mut().unwrap()
                     }
@@ -40,8 +42,8 @@ impl Solution {
                     //  2. Move node_to_insert to sorted_ref.next
                     sorted_ref.next = Some(node_to_insert);
                 }
-                return sorted.next
-            },
+                return sorted.next;
+            }
         }
     }
 }

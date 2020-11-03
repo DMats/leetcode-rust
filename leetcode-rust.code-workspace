@@ -3,5 +3,9 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"editor.formatOnSave": true,
+		"rust-analyzer.updates.channel": "nightly"
+	}
 }

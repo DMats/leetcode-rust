@@ -16,16 +16,17 @@ impl Solution {
         let mut max_power = 0;
         let mut current_power = 0;
         let mut current_char = &s.chars().next().unwrap();
-        for c in s.chars() {
+        for (i, c) in s.chars().enumerate() {
             if c == *current_char {
                 current_power += 1;
                 if current_power > max_power {
                     max_power = current_power;
                 }
             } else {
-                current_char = &c;
+                current_char = &s.chars().nth(i).unwrap();
                 current_power = 0;
             }
         }
+        max_power
     }
 }

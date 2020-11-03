@@ -23,7 +23,7 @@ impl Solution {
                     max_power = current_power;
                 }
             } else {
-                current_char = s.chars().nth(i).unwrap();
+                current_char = c;
                 current_power = 1;
             }
         }

@@ -1,1 +1,1 @@
-
+mod lc1446_consecutive_characters;

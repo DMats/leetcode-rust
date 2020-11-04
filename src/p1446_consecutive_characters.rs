@@ -47,8 +47,67 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
+    fn leetcode() {
+        assert_eq!(2, Solution::max_power(String::from("leetcode")));
+    }
+
+    #[test]
+    fn abbcccddddeeeeedcba() {
+        assert_eq!(5, Solution::max_power(String::from("abbcccddddeeeeedcba")));
+    }
+
+    #[test]
+    fn triplepillooooow() {
+        assert_eq!(5, Solution::max_power(String::from("triplepillooooow")));
+    }
+
+    #[test]
+    fn hooraaaaaaaaaaay() {
+        assert_eq!(11, Solution::max_power(String::from("hooraaaaaaaaaaay")));
+    }
+
+    #[test]
+    fn tourist() {
+        assert_eq!(1, Solution::max_power(String::from("tourist")));
+    }
+
+    #[test]
+    fn empty_string() {
+        assert_eq!(0, Solution::max_power(String::from("")));
+    }
+
+    #[test]
+    fn five_hundred() {
+        assert_eq!(
+            500,
+            Solution::max_power(String::from(
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaa"
+            ))
+        );
+    }
+
+    #[test]
+    fn five_hundred_and_one() {
+        assert_eq!(
+            501,
+            Solution::max_power(String::from(
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+                aaaa"
+            ))
+        );
     }
 }

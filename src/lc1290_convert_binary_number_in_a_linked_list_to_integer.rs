@@ -14,7 +14,7 @@ impl Solution {
             Some(node) => {
                 decimal = (*node).val;
                 let mut curr_node = (*node).next;
-                for i in 0..30 {
+                for _i in 0..30 {
                     match curr_node {
                         None => return decimal,
                         Some(next_node) => {

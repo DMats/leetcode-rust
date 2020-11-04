@@ -2,10 +2,17 @@
 
 A repository of my LeetCode answers in Rust.
 
-## VSCode
+## Develop in VSCode with rust-analyzer extension
 
-This repo is developed in VSCode using the `rust-analyzer` extension. The
-workspace file `leetcode-rust.code-workspace` configures the `rust-analyzer`
+This repo is developed in VSCode using the `rust-analyzer` extension. Install
+the rust-analyzer extension by entering this command at the command palette
+`Ctrl+P`
+
+```none
+ext install rust-lang.rust
+```
+
+The workspace file `leetcode-rust.code-workspace` configures the `rust-analyzer`
 extension to automatically download "nightly" toolchain and run `rustfmt` on
 save, using the config options stored in `rustfmt.toml`.
 

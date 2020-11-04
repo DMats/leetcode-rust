@@ -12,6 +12,8 @@ impl ListNode {
     }
 }
 
+pub struct Solution;
+
 /// Sort a linked list using insertion sort.
 ///
 /// Algorithm of Insertion Sort:

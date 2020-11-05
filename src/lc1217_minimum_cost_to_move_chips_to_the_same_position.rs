@@ -12,11 +12,38 @@
 ///
 /// * 1 <= position.length <= 100
 /// * 1 <= position[i] <= 10^9
+///
+/// Pseudocode:
+/// - min_cost = MAX
+/// - for destination in position
+///   - total_cost = 0
+///   - for (current_location, chip_count) in position
+///     - cost_to_move_one_chip = abs(current_location - destination) % 2
+///     - cost_to_move_multiple_chips = chip_count * cost_to_move_one_chip
+///     - total_cost += cost_to_move_multiple_chips
+///   - min_cost = min(min_cost, total_cost)
+/// - return min_cost
 pub struct Solution;
 impl Solution {
     #[allow(unused_variables)]
     pub fn min_cost_to_move_chips(position: Vec<i32>) -> i32 {
-        0
+        let mut min_cost = std::i32::MAX;
+        for (destination, _) in position.iter().enumerate() {
+            let mut total_cost = 0;
+            for (current_location, chip_count) in position.iter().enumerate() {
+                let (distance_to_destination, overflow_occurred) =
+                    current_location.overflowing_sub(destination);
+                let cost_to_move_one_chip = (match overflow_occurred {
+                    // If overflow occurred, reverse the subtraction
+                    true => destination - current_location,
+                    false => distance_to_destination,
+                } % 2) as i32;
+                let cost_to_move_multiple_chips = chip_count * cost_to_move_one_chip;
+                total_cost += cost_to_move_multiple_chips;
+            }
+            min_cost = std::cmp::min(min_cost, total_cost);
+        }
+        min_cost
     }
 }
 

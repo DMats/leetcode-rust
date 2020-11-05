@@ -45,3 +45,32 @@ impl Solution {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::sll;
+    use crate::util::singly_linked_list::to_singly_linked_list;
+
+    use super::*;
+
+    #[test]
+    fn simple() {
+        assert_eq!(
+            sll![1, 2, 3, 4],
+            Solution::insertion_sort_list(sll![4, 2, 1, 3])
+        );
+    }
+
+    #[test]
+    fn negative_one() {
+        assert_eq!(
+            sll![-1, 0, 3, 4, 5],
+            Solution::insertion_sort_list(sll![-1, 5, 3, 4, 0])
+        );
+    }
+
+    #[test]
+    fn none() {
+        assert_eq!(None, Solution::insertion_sort_list(None));
+    }
+}

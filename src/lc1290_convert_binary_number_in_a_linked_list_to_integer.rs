@@ -28,3 +28,39 @@ impl Solution {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::sll;
+    use crate::util::singly_linked_list::to_singly_linked_list;
+
+    use super::*;
+
+    #[test]
+    fn five() {
+        assert_eq!(5, Solution::get_decimal_value(sll![1, 0, 1,]));
+    }
+
+    #[test]
+    fn zero() {
+        assert_eq!(0, Solution::get_decimal_value(sll![0]));
+    }
+
+    #[test]
+    fn one() {
+        assert_eq!(1, Solution::get_decimal_value(sll![1]));
+    }
+
+    #[test]
+    fn eighteen_thousand_eight_hundred_eighty() {
+        assert_eq!(
+            18_880,
+            Solution::get_decimal_value(sll![1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0])
+        );
+    }
+
+    #[test]
+    fn double_zero() {
+        assert_eq!(0, Solution::get_decimal_value(sll![0, 0]));
+    }
+}

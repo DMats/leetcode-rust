@@ -14,6 +14,7 @@
 /// * 1 <= position[i] <= 10^9
 pub struct Solution;
 impl Solution {
+    #[allow(unused_variables)]
     pub fn min_cost_to_move_chips(position: Vec<i32>) -> i32 {
         0
     }

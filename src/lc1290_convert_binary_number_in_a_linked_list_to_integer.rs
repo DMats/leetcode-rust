@@ -10,7 +10,7 @@ impl Solution {
     pub fn get_decimal_value(head: Option<Box<ListNode>>) -> i32 {
         let mut decimal;
         match head {
-            None => return 0,
+            None => 0,
             Some(node) => {
                 decimal = (*node).val;
                 let mut curr_node = (*node).next;
@@ -23,7 +23,7 @@ impl Solution {
                         }
                     }
                 }
-                return decimal;
+                decimal
             }
         }
     }

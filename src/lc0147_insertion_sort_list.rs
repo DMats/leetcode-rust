@@ -15,7 +15,7 @@ pub struct Solution;
 impl Solution {
     pub fn insertion_sort_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         match head {
-            None => return None,
+            None => None,
             Some(node) => {
                 // Move node into unsorted
                 let mut unsorted = Some(node);
@@ -40,7 +40,7 @@ impl Solution {
                     //  2. Move node_to_insert to sorted_ref.next
                     sorted_ref.next = Some(node_to_insert);
                 }
-                return sorted.next;
+                sorted.next
             }
         }
     }

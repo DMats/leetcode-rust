@@ -17,7 +17,19 @@ pub struct Solution;
 impl Solution {
     #[allow(unused_variables)]
     pub fn smallest_divisor(nums: Vec<i32>, threshold: i32) -> i32 {
-        0
+        let mut min_divisor = 0;
+        for divisor in 1..threshold {
+            let mut sum = 0;
+            for num in nums.iter() {
+                // divide and round up (ceiling)
+                let quotient_rounded_up = (num + divisor - 1) / divisor;
+                sum += quotient_rounded_up;
+            }
+            if sum <= threshold {
+                min_divisor = divisor;
+            }
+        }
+        min_divisor
     }
 }
 

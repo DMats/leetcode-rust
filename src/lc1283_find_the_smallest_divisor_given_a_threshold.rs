@@ -16,22 +16,31 @@
 pub struct Solution;
 impl Solution {
     pub fn smallest_divisor(nums: Vec<i32>, threshold: i32) -> i32 {
-        let mut min_divisor = 0;
-        // max_divisor will not be more than the maximum value of nums[i]
-        let max_divisor = 10i32.pow(6);
-        'outer: for divisor in 1..max_divisor {
+        let mut left = 1;
+        // min_divisor won't be more than max num[i].
+        // Safe to use unwrap because 1 <= nums.length
+        let mut right = nums.iter().max().unwrap() - 1;
+        while left <= right {
+            // divide and round down (floor)
+            let divisor = (left + right) / 2;
             let mut sum = 0;
             for num in nums.iter() {
                 // divide and round up (ceiling)
                 let quotient_rounded_up = (num + divisor - 1) / divisor;
                 sum += quotient_rounded_up;
             }
+            if sum > threshold {
+                // Solution not found. Search the right half because divisors
+                // less than this would also have a sum greater than threshold.
+                left = divisor + 1;
+            }
             if sum <= threshold {
-                min_divisor = divisor;
-                break 'outer;
+                // Potential solution found! Search the left half to see if a
+                // lower solution exists.
+                right = divisor - 1;
             }
         }
-        min_divisor
+        right + 1
     }
 }
 

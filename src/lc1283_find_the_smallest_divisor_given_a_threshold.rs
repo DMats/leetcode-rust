@@ -64,8 +64,8 @@ mod test {
 
     #[test]
     fn big_numbers_large_array() {
-        println!(
-            "{}",
+        assert_eq!(
+            137702,
             Solution::smallest_divisor(
                 vec![
                     653067, 154931, 685532, 822258, 950050, 137980, 879671, 469904, 688674, 511909,
@@ -172,6 +172,5 @@ mod test {
                 4239,
             )
         );
-        assert!(false);
     }
 }

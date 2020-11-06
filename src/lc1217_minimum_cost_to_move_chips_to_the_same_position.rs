@@ -17,17 +17,15 @@ impl Solution {
     #[allow(unused_variables)]
     pub fn min_cost_to_move_chips(position: Vec<i32>) -> i32 {
         let mut min_cost = std::i32::MAX;
-        let max_position = *position.iter().max().unwrap() as usize;
-        let max_index = max_position - 1;
-        for destination in 0..max_index {
+        for (_, destination) in position.iter().enumerate() {
             let mut total_cost = 0;
             for (chip_id, chip_position) in position.iter().enumerate() {
                 let chip_index = (*chip_position - 1) as usize;
                 let (distance_to_destination, overflow_occurred) =
-                    chip_index.overflowing_sub(destination);
+                    chip_index.overflowing_sub(*destination as usize);
                 let cost = (match overflow_occurred {
                     // If overflow occurred, reverse the subtraction
-                    true => destination - chip_index,
+                    true => *destination as usize - chip_index,
                     false => distance_to_destination,
                 } % 2) as i32;
                 total_cost += cost;

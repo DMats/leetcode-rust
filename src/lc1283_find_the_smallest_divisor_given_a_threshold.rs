@@ -17,7 +17,9 @@ pub struct Solution;
 impl Solution {
     pub fn smallest_divisor(nums: Vec<i32>, threshold: i32) -> i32 {
         let mut min_divisor = 0;
-        'outer: for divisor in 1..threshold {
+        // max_divisor will not be more than the maximum value of nums[i]
+        let max_divisor = 10i32.pow(6);
+        'outer: for divisor in 1..max_divisor {
             let mut sum = 0;
             for num in nums.iter() {
                 // divide and round up (ceiling)

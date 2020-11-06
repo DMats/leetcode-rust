@@ -53,4 +53,9 @@ mod tests {
     fn large_split() {
         assert_eq!(1, Solution::min_cost_to_move_chips(vec![1, 1000000000]));
     }
+
+    #[test]
+    fn eleven() {
+        assert_eq!(0, Solution::min_cost_to_move_chips(vec![11]));
+    }
 }

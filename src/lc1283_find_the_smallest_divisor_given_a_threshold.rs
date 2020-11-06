@@ -15,7 +15,6 @@
 /// * nums.length <= threshold <= 10^6
 pub struct Solution;
 impl Solution {
-    #[allow(unused_variables)]
     pub fn smallest_divisor(nums: Vec<i32>, threshold: i32) -> i32 {
         let mut min_divisor = 0;
         'outer: for divisor in 1..threshold {

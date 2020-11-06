@@ -14,7 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-pub mod point;
-pub mod singly_linked_list;
-pub mod tree;
-pub mod vec_string;
+#[macro_export]
+macro_rules! vec_string {
+    ($($e:expr),*) => {vec![$($e.to_owned()), *]};
+    ($($e:expr,)*) => {vec![$($e.to_owned()), *]};
+}

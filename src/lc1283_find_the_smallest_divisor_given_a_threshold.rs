@@ -18,7 +18,7 @@ impl Solution {
     #[allow(unused_variables)]
     pub fn smallest_divisor(nums: Vec<i32>, threshold: i32) -> i32 {
         let mut min_divisor = 0;
-        for divisor in 1..threshold {
+        'outer: for divisor in 1..threshold {
             let mut sum = 0;
             for num in nums.iter() {
                 // divide and round up (ceiling)
@@ -27,6 +27,7 @@ impl Solution {
             }
             if sum <= threshold {
                 min_divisor = divisor;
+                break 'outer;
             }
         }
         min_divisor

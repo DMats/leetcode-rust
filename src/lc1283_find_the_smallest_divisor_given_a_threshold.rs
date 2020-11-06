@@ -51,4 +51,12 @@ mod test {
     fn nineteen_thresh_five() {
         assert_eq!(4, Solution::smallest_divisor(vec![19], 5));
     }
+
+    #[test]
+    fn big_numbers() {
+        assert_eq!(
+            495280,
+            Solution::smallest_divisor(vec![962551, 933661, 905225, 923035, 990560], 10)
+        );
+    }
 }

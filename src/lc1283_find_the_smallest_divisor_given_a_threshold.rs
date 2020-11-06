@@ -18,8 +18,7 @@ impl Solution {
     pub fn smallest_divisor(nums: Vec<i32>, threshold: i32) -> i32 {
         let mut left = 1;
         // min_divisor won't be more than max num[i].
-        // Safe to use unwrap because 1 <= nums.length
-        let mut right = nums.iter().max().unwrap() - 1;
+        let mut right = 999_999; // (10 ^ 6) - 1
         while left <= right {
             // divide and round down (floor)
             let divisor = (left + right) / 2;

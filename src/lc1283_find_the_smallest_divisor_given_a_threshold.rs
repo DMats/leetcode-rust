@@ -29,15 +29,14 @@ impl Solution {
                 let quotient_rounded_up = (num + divisor - 1) / divisor;
                 sum += quotient_rounded_up;
             }
-            if sum > threshold {
-                // Solution not found. Search the right half because divisors
-                // less than this would also have a sum greater than threshold.
-                left = divisor + 1;
-            }
             if sum <= threshold {
                 // Potential solution found! Search the left half to see if a
                 // lower solution exists.
                 right = divisor - 1;
+            } else {
+                // Solution not found. Search the right half because divisors
+                // less than this would also have a sum greater than threshold.
+                left = divisor + 1;
             }
         }
         right + 1

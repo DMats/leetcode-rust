@@ -16,22 +16,14 @@ pub struct Solution;
 impl Solution {
     pub fn min_cost_to_move_chips(position: Vec<i32>) -> i32 {
         let mut min_cost = std::i32::MAX;
-        dbg!(&min_cost);
         for (_, destination) in position.iter().enumerate() {
-            dbg!(&destination);
             let mut total_cost = 0;
-            dbg!(&total_cost);
             for (_, chip_position) in position.iter().enumerate() {
-                dbg!(&chip_position);
                 let distance_to_destination = (*chip_position - *destination).abs();
-                dbg!(&distance_to_destination);
                 let cost = distance_to_destination % 2;
-                dbg!(&cost);
                 total_cost += cost;
-                dbg!(&total_cost);
             }
             min_cost = std::cmp::min(min_cost, total_cost);
-            dbg!(&min_cost);
         }
         min_cost
     }

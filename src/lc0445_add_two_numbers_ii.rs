@@ -63,7 +63,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_7243_plus_564() {
+    fn test_7_243_plus_564() {
         assert_eq!(
             sll![7, 8, 0, 7],
             Solution::add_two_numbers(sll![7, 2, 4, 3], sll![5, 6, 4])
@@ -76,10 +76,18 @@ mod tests {
     }
 
     #[test]
-    fn test_3999999999_plus_7() {
+    fn test_3_999_999_999_plus_7() {
         assert_eq!(
             sll![4, 0, 0, 0, 0, 0, 0, 0, 0, 6],
             Solution::add_two_numbers(sll![3, 9, 9, 9, 9, 9, 9, 9, 9, 9], sll![7])
+        )
+    }
+
+    #[test]
+    fn test_9_999_999_999_plus_0() {
+        assert_eq!(
+            sll![9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+            Solution::add_two_numbers(sll![9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9], sll![0])
         )
     }
 }

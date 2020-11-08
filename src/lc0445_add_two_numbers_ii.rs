@@ -17,11 +17,8 @@ impl Solution {
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
         let decimal_1 = Solution::digits_list_to_decimal(l1);
-        dbg!(&decimal_1);
         let decimal_2 = Solution::digits_list_to_decimal(l2);
-        dbg!(&decimal_2);
         let sum = decimal_1 + decimal_2;
-        dbg!(&sum);
         Solution::decimal_to_digits_list(sum)
     }
 
@@ -41,15 +38,10 @@ impl Solution {
         let mut curr_node = Some(Box::new(ListNode::new(0)));
         while decimal > 0 {
             let digit = decimal % 10;
-            dbg!(&digit);
             decimal = (decimal - digit) / 10;
-            dbg!(&decimal);
             curr_node.as_mut().unwrap().val = digit;
-            dbg!(&curr_node);
             prev_node.next = curr_node;
-            dbg!(&prev_node);
             curr_node = Some(Box::new(prev_node));
-            dbg!(&curr_node);
             prev_node = ListNode::new(0);
         }
         curr_node.unwrap().next

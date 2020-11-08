@@ -16,6 +16,20 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
+        let decimal_1 = Solution::digits_list_to_decimal(l1);
+        dbg!(decimal_1);
+        let decimal_2 = Solution::digits_list_to_decimal(l2);
+        dbg!(decimal_2);
+        let sum = decimal_1 + decimal_2;
+        Solution::decimal_to_digits_list(sum)
+    }
+
+    pub fn digits_list_to_decimal(digits: Option<Box<ListNode>>) -> i32 {
+        0
+    }
+
+    pub fn decimal_to_digits_list(decimal: i32) -> Option<Box<ListNode>> {
+        Some(Box::new(ListNode::new(0)))
     }
 }
 

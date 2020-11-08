@@ -33,6 +33,9 @@ impl Solution {
     }
 
     pub fn decimal_to_digits_list(decimal: i32) -> Option<Box<ListNode>> {
+        if decimal == 0 {
+            return Some(Box::new(ListNode::new(0)));
+        }
         let mut decimal = decimal;
         let mut prev_node = ListNode::new(0);
         let mut curr_node = Some(Box::new(ListNode::new(0)));

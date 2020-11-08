@@ -62,4 +62,9 @@ mod tests {
             Solution::add_two_numbers(sll![7, 2, 4, 3], sll![5, 6, 4])
         );
     }
+
+    #[test]
+    fn test_0_plus_0() {
+        assert_eq!(sll![0], Solution::add_two_numbers(sll![0], sll![0]))
+    }
 }

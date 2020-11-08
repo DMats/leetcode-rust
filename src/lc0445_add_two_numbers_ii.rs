@@ -35,7 +35,16 @@ impl Solution {
     }
 
     pub fn decimal_to_digits_list(decimal: i32) -> Option<Box<ListNode>> {
-        Some(Box::new(ListNode::new(0)))
+        let mut dummy_head = ListNode::new(0);
+        let mut decimal = decimal;
+        let mut prev_node = &mut dummy_head;
+        while decimal > 0 {
+            let digit = decimal % 10;
+            decimal -= digit;
+            prev_node.next = Some(Box::new(ListNode::new(digit)));
+            prev_node = prev_node.next.as_mut().unwrap();
+        }
+        dummy_head.next
     }
 }
 

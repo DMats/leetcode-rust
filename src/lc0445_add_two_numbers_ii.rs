@@ -25,7 +25,13 @@ impl Solution {
     }
 
     pub fn digits_list_to_decimal(digits: Option<Box<ListNode>>) -> i32 {
-        0
+        let mut decimal = 0;
+        let mut digits = digits;
+        while let Some(digit) = digits {
+            decimal = (decimal * 10) + digit.val;
+            digits = digit.next;
+        }
+        decimal
     }
 
     pub fn decimal_to_digits_list(decimal: i32) -> Option<Box<ListNode>> {

@@ -70,4 +70,12 @@ mod tests {
     fn test_0_plus_0() {
         assert_eq!(sll![0], Solution::add_two_numbers(sll![0], sll![0]))
     }
+
+    #[test]
+    fn test_3999999999_plus_7() {
+        assert_eq!(
+            sll![4, 0, 0, 0, 0, 0, 0, 0, 0, 6],
+            Solution::add_two_numbers(sll![3, 9, 9, 9, 9, 9, 9, 9, 9, 9], sll![7])
+        )
+    }
 }

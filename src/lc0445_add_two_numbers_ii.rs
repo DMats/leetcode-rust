@@ -17,10 +17,11 @@ impl Solution {
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
         let decimal_1 = Solution::digits_list_to_decimal(l1);
-        dbg!(decimal_1);
+        dbg!(&decimal_1);
         let decimal_2 = Solution::digits_list_to_decimal(l2);
-        dbg!(decimal_2);
+        dbg!(&decimal_2);
         let sum = decimal_1 + decimal_2;
+        dbg!(&sum);
         Solution::decimal_to_digits_list(sum)
     }
 
@@ -35,16 +36,23 @@ impl Solution {
     }
 
     pub fn decimal_to_digits_list(decimal: i32) -> Option<Box<ListNode>> {
-        let mut dummy_head = ListNode::new(0);
         let mut decimal = decimal;
-        let mut prev_node = &mut dummy_head;
+        let mut prev_node = ListNode::new(0);
+        let mut curr_node = Some(Box::new(ListNode::new(0)));
         while decimal > 0 {
             let digit = decimal % 10;
-            decimal -= digit;
-            prev_node.next = Some(Box::new(ListNode::new(digit)));
-            prev_node = prev_node.next.as_mut().unwrap();
+            dbg!(&digit);
+            decimal = (decimal - digit) / 10;
+            dbg!(&decimal);
+            curr_node.as_mut().unwrap().val = digit;
+            dbg!(&curr_node);
+            prev_node.next = curr_node;
+            dbg!(&prev_node);
+            curr_node = Some(Box::new(prev_node));
+            dbg!(&curr_node);
+            prev_node = ListNode::new(0);
         }
-        dummy_head.next
+        curr_node.unwrap().next
     }
 }
 

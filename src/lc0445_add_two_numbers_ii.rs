@@ -16,42 +16,21 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let decimal_1 = Solution::digits_list_to_decimal(l1);
-        let decimal_2 = Solution::digits_list_to_decimal(l2);
-        let sum = decimal_1 + decimal_2;
-        Solution::decimal_to_digits_list(sum)
+        let l1_len = l1.unwrap().len();
+        dbg!(&l1_len);
+        Some(Box::new(ListNode::new(0)))
     }
+}
 
-    pub fn digits_list_to_decimal(digits: Option<Box<ListNode>>) -> u32 {
-        let mut decimal: u32 = 0;
-        let mut digits = digits;
-        while let Some(digit) = digits {
-            // Convert digit from i32 to u32. Safe because digit is guaranteed
-            // to be a non-negative number between 0 and 9, inclusive.
-            decimal = (decimal * 10) + digit.val as u32;
-            digits = digit.next;
+impl ListNode {
+    fn len(&self) -> i32 {
+        let mut count = 1;
+        let mut next = &self.next;
+        while let Some(node) = next {
+            count += 1;
+            next = &node.next;
         }
-        decimal
-    }
-
-    pub fn decimal_to_digits_list(decimal: u32) -> Option<Box<ListNode>> {
-        if decimal == 0 {
-            return Some(Box::new(ListNode::new(0)));
-        }
-        let mut decimal = decimal;
-        let mut prev_node = ListNode::new(0);
-        let mut curr_node = Some(Box::new(ListNode::new(0)));
-        while decimal > 0 {
-            let digit = decimal % 10;
-            decimal = (decimal - digit) / 10;
-            // Convert digit from u32 to i32. Safe because digit is guaranteed
-            // to be a non-negative number between 0 and 9, inclusive.
-            curr_node.as_mut().unwrap().val = digit as i32;
-            prev_node.next = curr_node;
-            curr_node = Some(Box::new(prev_node));
-            prev_node = ListNode::new(0);
-        }
-        curr_node.unwrap().next
+        count
     }
 }
 

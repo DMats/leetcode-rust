@@ -20,7 +20,6 @@ impl Solution {
         let l1_len = l1.as_ref().unwrap().len();
         let l2_len = l2.as_ref().unwrap().len();
         let (mut sum, carry) = Solution::recursive_add(l1, l2, l1_len, l2_len);
-        dbg!(&sum);
         let sum_plus_carry = sum.as_ref().unwrap().val + carry;
         if sum_plus_carry <= 9 {
             sum.as_mut().unwrap().val += carry;
@@ -47,11 +46,8 @@ impl Solution {
                     Solution::recursive_add(l1, l2.unwrap().next, l1_len, l2_len - 1);
                 let (sum_of_current_digits, carry_of_current_digits) =
                     Solution::add_digits_and_carry(l1_val, l2_val, carry_of_lower_digits);
-                dbg!(&sum_of_current_digits);
-
                 let mut sum_head = ListNode::new(sum_of_current_digits);
                 sum_head.next = sum_of_lower_digits;
-                dbg!(&sum_head);
                 (Some(Box::new(sum_head)), carry_of_current_digits)
             }
             Greater => {
@@ -61,11 +57,9 @@ impl Solution {
                     Solution::recursive_add(l1.unwrap().next, l2, l1_len - 1, l2_len);
                 let (sum_of_current_digits, carry_of_current_digits) =
                     Solution::add_digits_and_carry(l1_val, l2_val, carry_of_lower_digits);
-                dbg!(&sum_of_current_digits);
 
                 let mut sum_head = ListNode::new(sum_of_current_digits);
                 sum_head.next = sum_of_lower_digits;
-                dbg!(&sum_head);
                 (Some(Box::new(sum_head)), carry_of_current_digits)
             }
             Equal => {
@@ -75,8 +69,6 @@ impl Solution {
                 if l1_len == 1 {
                     let (sum_of_current_digits, carry_of_current_digits) =
                         Solution::add_digits_and_carry(l1_val, l2_val, 0);
-                    dbg!(&sum_of_current_digits);
-
                     (
                         Some(Box::new(ListNode::new(sum_of_current_digits))),
                         carry_of_current_digits,
@@ -90,10 +82,8 @@ impl Solution {
                     );
                     let (sum_of_current_digits, carry_of_current_digits) =
                         Solution::add_digits_and_carry(l1_val, l2_val, carry_of_lower_digits);
-                    dbg!(&sum_of_current_digits);
                     let mut sum_head = ListNode::new(sum_of_current_digits);
                     sum_head.next = sum_of_lower_digits;
-                    dbg!(&sum_head);
                     (Some(Box::new(sum_head)), carry_of_current_digits)
                 }
             }
@@ -103,15 +93,9 @@ impl Solution {
     /// Add two digits plus a carry. Both digits must be less than or equal to 9
     /// Returns the resulting digit and new carry
     fn add_digits_and_carry(digit1: i32, digit2: i32, carry: i32) -> (i32, i32) {
-        dbg!(&digit1);
-        dbg!(&digit2);
-        dbg!(&carry);
         let sum = digit1 + digit2 + carry;
-        dbg!(&sum);
         let new_carry = sum / 10;
-        dbg!(&new_carry);
         let digit = if new_carry == 0 { sum } else { sum % 10 };
-        dbg!(&digit);
         (digit, new_carry)
     }
 }

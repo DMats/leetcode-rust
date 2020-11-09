@@ -84,7 +84,7 @@ mod tests {
     }
 
     #[test]
-    fn test_9_999_999_999_plus_0() {
+    fn test_9_999_999_999_999_plus_0() {
         assert_eq!(
             sll![9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
             Solution::add_two_numbers(sll![9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9], sll![0])

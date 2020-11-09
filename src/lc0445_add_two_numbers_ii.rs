@@ -16,8 +16,24 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let l1_len = l1.unwrap().len();
-        dbg!(&l1_len);
+        // Safe to unwrap because linked lists are guaranteed non-empty
+        let l1_len = l1.as_ref().unwrap().len();
+        let l2_len = l2.as_ref().unwrap().len();
+
+        // Recursively add with longer list as first parameter
+        if l1_len < l2_len {
+            Solution::recursive_add(l1, l2, l1_len, l2_len)
+        } else {
+            Solution::recursive_add(l2, l1, l2_len, l1_len)
+        }
+    }
+
+    fn recursive_add(
+        l1: Option<Box<ListNode>>,
+        l2: Option<Box<ListNode>>,
+        l1_len: i32,
+        l2_len: i32,
+    ) -> Option<Box<ListNode>> {
         Some(Box::new(ListNode::new(0)))
     }
 }

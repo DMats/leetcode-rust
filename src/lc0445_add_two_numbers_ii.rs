@@ -22,13 +22,13 @@ impl Solution {
 
         // Recursively add with longer list as first parameter
         if l1_len < l2_len {
-            Solution::recursive_add(l1, l2, l1_len, l2_len)
+            Solution::recursive_add_two_numbers(l1, l2, l1_len, l2_len)
         } else {
-            Solution::recursive_add(l2, l1, l2_len, l1_len)
+            Solution::recursive_add_two_numbers(l2, l1, l2_len, l1_len)
         }
     }
 
-    fn recursive_add(
+    fn recursive_add_two_numbers(
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
         l1_len: i32,

@@ -77,6 +77,8 @@ impl Solution {
                     let (sum, carry) = Solution::add_digits_and_carry(l1_val, l2_val, 0);
                     (Some(Box::new(ListNode::new(sum))), carry)
                 } else {
+                    // This is not the least significant digith position so
+                    // move to the next node in both l1 and l2 and recurse
                     let (sum_of_lower_digits, carry_of_lower_digits) = Solution::recursive_add(
                         l1.unwrap().next,
                         l2.unwrap().next,

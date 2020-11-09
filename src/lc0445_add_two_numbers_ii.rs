@@ -122,6 +122,7 @@ impl Solution {
 }
 
 impl ListNode {
+    /// Calculate length of list
     fn len(&self) -> i32 {
         let mut count = 1;
         let mut next = &self.next;

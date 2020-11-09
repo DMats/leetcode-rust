@@ -100,14 +100,13 @@ impl Solution {
     fn add_and_prepend_digit(
         sum_of_lower_digits: Option<Box<ListNode>>,
         carry_of_lower_digits: i32,
-        val1: i32,
-        val2: i32,
+        digit1: i32,
+        digit2: i32,
     ) -> (Option<Box<ListNode>>, i32) {
-        let (sum_of_current_digits, carry_of_current_digits) =
-            Solution::add_digits_and_carry(val1, val2, carry_of_lower_digits);
-        let mut sum_head = ListNode::new(sum_of_current_digits);
+        let (sum, carry) = Solution::add_digits_and_carry(digit1, digit2, carry_of_lower_digits);
+        let mut sum_head = ListNode::new(sum);
         sum_head.next = sum_of_lower_digits;
-        (Some(Box::new(sum_head)), carry_of_current_digits)
+        (Some(Box::new(sum_head)), carry)
     }
 
     /// Add two digits plus a carry. Both digits must be less than or equal to 9

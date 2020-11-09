@@ -39,7 +39,7 @@ impl Solution {
     ) -> (Option<Box<ListNode>>, i32) {
         use std::cmp::Ordering::{Equal, Greater, Less};
         match l1_len.cmp(&l2_len) {
-            // l1 is shorter than l2 so move ot the next node in l2 and recurse
+            // l1 is shorter than l2 so move to the next node in l2 and recurse
             Less => {
                 let l1_val = 0;
                 let l2_val = l2.as_ref().unwrap().val;

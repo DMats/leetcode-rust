@@ -169,4 +169,9 @@ mod tests {
             Solution::add_two_numbers(sll![9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9], sll![0])
         )
     }
+
+    #[test]
+    fn test_5_plus_5() {
+        assert_eq!(sll![1, 0], Solution::add_two_numbers(sll![5], sll![5]))
+    }
 }

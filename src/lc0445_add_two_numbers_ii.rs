@@ -19,15 +19,13 @@ impl Solution {
         // Safe to unwrap because linked lists are guaranteed non-empty
         let l1_len = l1.as_ref().unwrap().len();
         let l2_len = l2.as_ref().unwrap().len();
-        let (mut sum, carry) = Solution::recursive_add(l1, l2, l1_len, l2_len);
-        let sum_plus_carry = sum.as_ref().unwrap().val + carry;
-        if sum_plus_carry <= 9 {
-            sum.as_mut().unwrap().val += carry;
-            sum
-        } else {
+        let (sum, carry) = Solution::recursive_add(l1, l2, l1_len, l2_len);
+        if carry == 1 {
             let mut sum_head = ListNode::new(1);
             sum_head.next = sum;
             Some(Box::new(sum_head))
+        } else {
+            sum
         }
     }
 

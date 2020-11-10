@@ -21,11 +21,12 @@ impl Solution {
         let l2_len = l2.as_ref().unwrap().len();
         let (sum, carry) = Solution::recursive_add(l1, l2, l1_len, l2_len);
         if carry == 1 {
-            let mut sum_head = ListNode::new(1);
-            sum_head.next = sum;
-            Some(Box::new(sum_head))
+            Some(Box::new(ListNode {
+                val: 1,
+                next: Some(Box::new(sum)),
+            }))
         } else {
-            sum
+            Some(Box::new(sum))
         }
     }
 
@@ -34,7 +35,7 @@ impl Solution {
         l2: Option<Box<ListNode>>,
         l1_len: i32,
         l2_len: i32,
-    ) -> (Option<Box<ListNode>>, i32) {
+    ) -> (ListNode, i32) {
         use std::cmp::Ordering::{Equal, Greater, Less};
         match l1_len.cmp(&l2_len) {
             // l1 is shorter than l2 so move to the next node in l2 and recurse
@@ -73,7 +74,7 @@ impl Solution {
                     // This is the least significant digit position so add the
                     // digits and create the first sum node
                     let (sum, carry) = Solution::add_digits_and_carry(l1_val, l2_val, 0);
-                    (Some(Box::new(ListNode::new(sum))), carry)
+                    (ListNode::new(sum), carry)
                 } else {
                     // This is not the least significant digith position so
                     // move to the next node in both l1 and l2 and recurse
@@ -98,15 +99,19 @@ impl Solution {
     /// Add two digits plus a carry. Prepend the resulting digit to the sum of
     /// the lower digits. Return the new sum head and the new carry.
     fn add_and_prepend_digit(
-        sum_of_lower_digits: Option<Box<ListNode>>,
+        sum_of_lower_digits: ListNode,
         carry_of_lower_digits: i32,
         digit1: i32,
         digit2: i32,
-    ) -> (Option<Box<ListNode>>, i32) {
+    ) -> (ListNode, i32) {
         let (sum, carry) = Solution::add_digits_and_carry(digit1, digit2, carry_of_lower_digits);
-        let mut sum_head = ListNode::new(sum);
-        sum_head.next = sum_of_lower_digits;
-        (Some(Box::new(sum_head)), carry)
+        (
+            ListNode {
+                val: sum,
+                next: Some(Box::new(sum_of_lower_digits)),
+            },
+            carry,
+        )
     }
 
     /// Add two digits plus a carry. Both digits must be less than or equal to 9
@@ -114,8 +119,8 @@ impl Solution {
     fn add_digits_and_carry(digit1: i32, digit2: i32, carry: i32) -> (i32, i32) {
         let sum = digit1 + digit2 + carry;
         let new_carry = sum / 10;
-        let digit = if new_carry == 0 { sum } else { sum % 10 };
-        (digit, new_carry)
+        let sum = if new_carry == 0 { sum } else { sum % 10 };
+        (sum, new_carry)
     }
 }
 

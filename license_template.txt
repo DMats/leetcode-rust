@@ -1,5 +1,5 @@
-/*
- * Copyright 2020 David Hunt-Mateo (DMats)
+/*{(.*?\n?)*}
+ * Copyright {2\d{3}(-2\d{3})?} David Hunt-Mateo (DMats)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,8 +13,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-pub mod point;
-pub mod singly_linked_list;
-pub mod tree;
-pub mod vec_string;

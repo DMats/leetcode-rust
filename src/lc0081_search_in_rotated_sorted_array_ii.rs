@@ -36,12 +36,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn star() {
+    fn example_1() {
         assert_eq!(true, Solution::search(vec![2, 5, 6, 0, 0, 1, 2], 0));
     }
 
     #[test]
-    fn two() {
-        assert_eq!(false, Solution::search(vec![2, 5, 6, 0, 0, 1, 2], 0));
+    fn example_2() {
+        assert_eq!(false, Solution::search(vec![2, 5, 6, 0, 0, 1, 2], 3));
     }
 }

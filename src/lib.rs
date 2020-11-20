@@ -19,6 +19,7 @@
 
 mod util;
 
+mod lc0081_search_in_rotated_sorted_array_ii;
 mod lc0147_insertion_sort_list;
 mod lc0310_minimum_height_trees;
 mod lc0445_add_two_numbers_ii;
